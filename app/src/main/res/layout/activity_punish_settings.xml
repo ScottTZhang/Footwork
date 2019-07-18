@@ -16,8 +16,9 @@
 
     <TextView
         android:id="@+id/DrillTextView"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:text="@string/please_pick_drill"
         android:textAlignment="center"
@@ -30,8 +31,9 @@
 
     <TextView
         android:id="@+id/DifficultyTextView"
-        android:layout_width="348dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:text="@string/please_pick_a_difficulty"
         android:textAlignment="center"
@@ -42,19 +44,20 @@
 
     <GridView
         android:id="@+id/DifficultyGrid"
-        android:layout_width="match_constraint"
-        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DifficultyTextView" />
 
     <Button
-        android:id="@+id/PunishGoButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/PunishConfirmButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Go"
-        tools:layout_editor_absoluteX="284dp"
-        tools:layout_editor_absoluteY="635dp" />
+        android:layout_marginBottom="30dp"
+        android:text="@string/confirm_punish_settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="147dp" />
 
 
 </android.support.constraint.ConstraintLayout>
