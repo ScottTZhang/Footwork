@@ -1,0 +1,129 @@
+<resources>
+    <string name="app_name">Footwork</string>
+    <string name="reps_mode">Reps Mode</string>
+    <string name="time_mode">Time Mode</string>
+
+    <string name="reps_mode_settings">Reps Mode Settings</string>
+    <string name="time_mode_settings">Time Mode Settings</string>
+    <string name="time_sets_label">Sets</string>
+    <string name="reps_label">Reps</string>
+    <string name="reps_start">Start</string>
+    <string name="reps_ready">Ready</string>
+    <string name="break_time">Break Time</string>
+    <string name="setsText">Sets</string>
+    <string name="countdown">Countdown</string>
+    <string name="time_break_label">Break Time</string>
+    <string name="time_countdown_label">Countdown</string>
+    <string name="Time_start">Start</string>
+    <string name="timeReady">Ready</string>
+    <string name="timeView">00:00:00</string>
+    <string name="timeReps">0</string>
+    <string name="setTime">Set Time</string>
+    <string name="reps_timer">00:00:00</string>
+    <string name="reps_down">0</string>
+    <string name="drill_mode">Drill Mode</string>
+    <string name="punishment_boost">Punishment Boost</string>
+    <string name="please_pick_drill">Please pick a drill:</string>
+    <string name="please_pick_a_difficulty">Please pick a difficulty:</string>
+    <string name="confirm_punish_settings">Confirm</string>
+
+    <string-array name="reps_array">
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
+    <string-array name="break_array">
+        <item>10</item>
+        <item>12</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+        <item>70</item>
+        <item>75</item>
+        <item>80</item>
+        <item>90</item>
+    </string-array>
+    <string-array name="set_array">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="start_array">
+        <item>0</item>
+        <item>5</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="time_sets_array">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="set_time_array">
+        <item>8</item>
+        <item>20</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>75</item>
+        <item>90</item>
+        <item>105</item>
+        <item>120</item>
+        <item>135</item>
+        <item>150</item>
+        <item>180</item>
+        <item>240</item>
+        <item>300</item>
+    </string-array>
+    <string-array name="time_break_array">
+        <item>7</item>
+        <item>10</item>
+        <item>12</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+        <item>70</item>
+        <item>75</item>
+        <item>80</item>
+        <item>90</item>
+    </string-array>
+    <string-array name="time_start_array">
+        <item>0</item>
+        <item>5</item>
+        <item>10</item>
+    </string-array>
+
+</resources>
