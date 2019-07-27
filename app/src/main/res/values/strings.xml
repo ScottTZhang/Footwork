@@ -26,6 +26,8 @@
     <string name="please_pick_drill">Please pick a drill:</string>
     <string name="please_pick_a_difficulty">Please pick a difficulty:</string>
     <string name="confirm_punish_settings">Confirm</string>
+    <string name="punishClear">Clear</string>
+    <string name="todo">TODO</string>
 
     <string-array name="reps_array">
         <item>5</item>
@@ -124,6 +126,42 @@
         <item>0</item>
         <item>5</item>
         <item>10</item>
+    </string-array>
+
+    <!-- The Drill element details -->
+    <!--1.title: Drill name. e.g, Shadow play-->
+    <!--2.explanation: How to do the drill, include details, timed or with shuttle stack-->
+    <!--3.gif. The file name is the [index].gif. index is the first number from title, e.g, 1.Shadow Play-->
+    <!--Would consider moving these element to database-->
+    <string-array name="drill_title_array">
+        <item>1.Shadow Play (stack)</item>
+        <item>2.Full Back Smash</item>
+        <item>3.Stationary Smash</item>
+        <item>4.Front Play</item>
+        <item>5.Low-Gravity Drill (single)</item>
+        <item>6.Low-Gravity Drill (double)</item>
+        <item>7.Jumps/Lunges</item>
+        <item>8.Shadow Play (timed)</item>
+        <item>9.Side to Side</item>
+    </string-array>
+    <string-array name="drill_explanation_array">
+        <item>Shadow Play with shuttle stack (stack)</item>
+        <item>Full Back Smash with shuttle stack (stack)</item>
+        <item>Stationary Smash with shuttle stack (stack)</item>
+        <item>Front Play with shuttle stack (stack)</item>
+        <item>Low-Gravity Drill: Back-to-Front (Singles)</item>
+        <item>Low-Gravity Drill: Back area (Doubles)</item>
+        <item>Jumps/Lunges: Jump over obstacle (timed)</item>
+        <item>Shadow Play with shuttle stack (timed)</item>
+        <item>Side to Side: high and low stroke (timed)</item>
+    </string-array>
+
+    <!-- The difficulty element details -->
+    <string-array name="difficulty_title_array">
+        <item>2 min / 3 stacks</item>
+        <item>3 min / 4 stacks</item>
+        <item>4 min / 5 stacks</item>
+        <item>5 min / 6 stacks</item>
     </string-array>
 
 </resources>
