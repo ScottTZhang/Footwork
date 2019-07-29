@@ -1,22 +1,30 @@
 package com.example.footwork;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class DrillAdapter extends BaseAdapter {
-    private Context mContext;
 
-    DrillAdapter(Context c) {
-        mContext = c;
+    private Context mContext;
+    private final String[] gridViewString; //would change to  drill item object
+    private final Integer[] gridViewImageId;
+
+
+    DrillAdapter(Context context, String[] gridViewString, Integer[] gridViewImageId) {
+        mContext = context;
+        this.gridViewImageId = gridViewImageId;
+        this.gridViewString = gridViewString;
     }
 
     @Override
     public int getCount() {
-        return questionImages.length;
+        return gridViewString.length;
     }
 
     @Override
@@ -31,20 +39,33 @@ public class DrillAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView = new ImageView(mContext);
-        imageView.setLayoutParams(new GridView.LayoutParams(200, 200));
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setPadding(8, 8, 8, 8);
-        imageView.setImageResource(questionImages[position]);
-        return imageView;
+        View gridViewDrill;
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        ImageView drillImageView;
+        TextView drillTextView;
+        if (convertView == null) {
+            gridViewDrill = inflater.inflate(R.layout.drill_gridview_layout, parent, false);
+            drillTextView = gridViewDrill.findViewById(R.id.drill_gridview_text);
+            drillImageView = gridViewDrill.findViewById(R.id.drill_gridview_image);
+            drillTextView.setText(gridViewString[position]);
+            drillImageView.setImageResource(gridViewImageId[position]);
+
+//            gridViewDrill.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    View textView = v.findViewById(R.id.drill_gridview_text);
+//                    textView.setVisibility(View.VISIBLE);
+//                    View imageView = v.findViewById(R.id.drill_gridview_image);
+//                    imageView.setVisibility(View.INVISIBLE);
+//                }
+//            });
+
+        } else {
+            gridViewDrill = convertView;
+        }
+
+        return gridViewDrill;
     }
 
-    //Hard coded as 12. Needs to pass the value to values folder, and use
-    private Integer[] questionImages = {
-            R.drawable.question, R.drawable.question,
-            R.drawable.question, R.drawable.question,
-            R.drawable.question, R.drawable.question,
-            R.drawable.question, R.drawable.question,
-            R.drawable.question, R.drawable.question,
-            R.drawable.question, R.drawable.question};
 }
