@@ -42,7 +42,7 @@ public class DrillAdapter extends BaseAdapter {
         TextView drillTextView;
         if (convertView == null) {
             final LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-            convertView = layoutInflater.inflate(R.layout.drill_gridview_layout, parent, false);
+            convertView = layoutInflater.inflate(R.layout.gridview_layout, parent, false);
         }
         drillTextView = convertView.findViewById(R.id.gridview_text);
         drillImageView = convertView.findViewById(R.id.gridview_image);

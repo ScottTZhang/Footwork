@@ -1,22 +1,27 @@
 package com.example.footwork;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 
 public class DifficultyAdapter extends BaseAdapter {
-    private Context mContext;
 
-    DifficultyAdapter(Context c) {
-        mContext = c;
+    private Context mContext;
+    private final Difficulty[] difficulties; //would change to  drill item object
+
+    DifficultyAdapter(Context context, Difficulty[] difficulties) {
+        mContext = context;
+        this.difficulties = difficulties;
     }
 
     @Override
     public int getCount() {
-        return questionImages.length;
+        return difficulties.length;
     }
 
     @Override
@@ -26,21 +31,25 @@ public class DifficultyAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView = new ImageView(mContext);
-        imageView.setLayoutParams(new GridView.LayoutParams(200, 200));
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setPadding(8, 8, 8, 8);
-        imageView.setImageResource(questionImages[position]);
-        return imageView;
+        final Difficulty diff = difficulties[position];
+
+        ImageView difficultyImageView;
+        TextView difficultyTextView;
+        if (convertView == null) {
+            final LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+            convertView = layoutInflater.inflate(R.layout.gridview_layout, parent, false);
+        }
+        difficultyTextView = convertView.findViewById(R.id.gridview_text);
+        difficultyImageView = convertView.findViewById(R.id.gridview_image);
+        difficultyTextView.setText(diff.level);
+        difficultyImageView.setImageResource(diff.imageId);
+
+        return convertView;
     }
 
-    //Hard coded as 4. Needs to pass the value to values folder, and use
-    private Integer[] questionImages = {
-            R.drawable.question, R.drawable.question,
-            R.drawable.question, R.drawable.question};
 }
