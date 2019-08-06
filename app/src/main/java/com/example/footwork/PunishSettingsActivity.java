@@ -28,6 +28,17 @@ public class PunishSettingsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_punish_settings);
 
+        confirmPunishButton = findViewById(R.id.PunishConfirmButton);
+        confirmPunishButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+                return true;
+            }
+        });
+
         //Display the drill gridview
         //initialize the drill List
         List<Drill> drills = new ArrayList<>();
@@ -72,7 +83,7 @@ public class PunishSettingsActivity extends Activity {
 
 
         //Display the difficulty gridview
-        //initialize the drill List
+        //initialize the difficulty List
         List<Difficulty> difficulties = new ArrayList<>();
         List<String> difficultyLevels = Arrays.asList(getResources().getStringArray(R.array.difficulty_title_array));
         for (int index = 0; index < difficultyLevels.size(); index++) {
