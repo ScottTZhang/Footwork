@@ -19,6 +19,7 @@
         <activity
             android:name=".PunishSettingsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".PunishDetailsActivity" />
         <activity android:name=".PlayTimeActivity" />
         <activity android:name=".PlayRepsActivity" />
         <activity android:name=".RepsSettingsActivity" />

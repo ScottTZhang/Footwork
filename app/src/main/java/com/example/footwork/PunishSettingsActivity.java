@@ -17,25 +17,32 @@ import java.util.List;
 public class PunishSettingsActivity extends Activity {
 
     Button confirmPunishButton;
-    Button clearSelectionButton;
 
     GridView drillGridView;
     //Hard coded as 12. Needs to pass the value to values folder, and use
-
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_punish_settings);
 
+        // Long press Confirm button: refresh the activity.
         confirmPunishButton = findViewById(R.id.PunishConfirmButton);
         confirmPunishButton.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Intent intent = getIntent();
+                intent = getIntent();
                 finish();
                 startActivity(intent);
                 return true;
+            }
+        });
+        confirmPunishButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(PunishSettingsActivity.this, PunishDetailsActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -73,7 +80,6 @@ public class PunishSettingsActivity extends Activity {
                 imageView.setVisibility(View.INVISIBLE);
 
                 // set an Intent to Another Activity
-                Intent intent = new Intent(PunishSettingsActivity.this, PunishDetailsActivity.class);
                 String selectedDrillTitle = drillsArray[position].title;
                 intent.putExtra("title", selectedDrillTitle); // put image data in Intent
 
@@ -114,7 +120,6 @@ public class PunishSettingsActivity extends Activity {
                 view.setClickable(false);
 
                 // set an Intent to Another Activity
-                Intent intent = new Intent(PunishSettingsActivity.this, PunishDetailsActivity.class);
                 String selectedDifficultyLevel = difficultiesArray[position].level;
                 intent.putExtra("difficulty", selectedDifficultyLevel); // put difficulty data in Intent
                 Toast.makeText(PunishSettingsActivity.this, "Difficulty: " + selectedDifficultyLevel, Toast.LENGTH_SHORT).show();
