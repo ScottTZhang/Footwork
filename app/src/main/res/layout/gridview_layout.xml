@@ -3,7 +3,7 @@
     android:id="@+id/gridview_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
+    android:gravity="start"
     android:orientation="vertical">
 
     <ImageView
@@ -16,7 +16,6 @@
         android:id="@+id/gridview_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/gridview_image"
         android:textSize="20sp"
         android:visibility="invisible" />
 </RelativeLayout>

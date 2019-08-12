@@ -19,8 +19,8 @@ public class PunishSettingsActivity extends Activity {
     Button confirmPunishButton;
 
     GridView drillGridView;
-    //Hard coded as 12. Needs to pass the value to values folder, and use
     Intent intent;
+    String selectedDrillTitle, selectedDifficultyLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,10 @@ public class PunishSettingsActivity extends Activity {
         confirmPunishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 intent = new Intent(PunishSettingsActivity.this, PunishDetailsActivity.class);
+                intent.putExtra("difficulty", selectedDifficultyLevel); // put difficulty data in Intent
+                intent.putExtra("title", selectedDrillTitle); // put image data in Intent
                 startActivity(intent);
             }
         });
@@ -73,17 +76,15 @@ public class PunishSettingsActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                // Hide the question and display the title.
+                // Hide the question image and display the title.
                 View textView = view.findViewById(R.id.gridview_text);
                 textView.setVisibility(View.VISIBLE);
                 View imageView = view.findViewById(R.id.gridview_image);
                 imageView.setVisibility(View.INVISIBLE);
 
-                // set an Intent to Another Activity
-                String selectedDrillTitle = drillsArray[position].title;
-                intent.putExtra("title", selectedDrillTitle); // put image data in Intent
+                selectedDrillTitle = drillsArray[position].title;
 
-                Toast.makeText(PunishSettingsActivity.this, selectedDrillTitle + " is added.", Toast.LENGTH_LONG).show();
+                Toast.makeText(PunishSettingsActivity.this, id + " " + selectedDrillTitle + " is added.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -119,10 +120,8 @@ public class PunishSettingsActivity extends Activity {
                 imageView.setVisibility(View.INVISIBLE);
                 view.setClickable(false);
 
-                // set an Intent to Another Activity
-                String selectedDifficultyLevel = difficultiesArray[position].level;
-                intent.putExtra("difficulty", selectedDifficultyLevel); // put difficulty data in Intent
-                Toast.makeText(PunishSettingsActivity.this, "Difficulty: " + selectedDifficultyLevel, Toast.LENGTH_SHORT).show();
+                selectedDifficultyLevel = difficultiesArray[position].level;
+                Toast.makeText(PunishSettingsActivity.this, id + " Difficulty: " + selectedDifficultyLevel, Toast.LENGTH_SHORT).show();
             }
         });
     }
