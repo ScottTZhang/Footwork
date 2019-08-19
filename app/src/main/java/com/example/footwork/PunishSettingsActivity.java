@@ -21,6 +21,7 @@ public class PunishSettingsActivity extends Activity {
     GridView drillGridView;
     Intent intent;
     String selectedDrillTitle, selectedDifficultyLevel;
+    int drillItemCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +39,13 @@ public class PunishSettingsActivity extends Activity {
                 return true;
             }
         });
+
+        //Short press to pass the information to new page
         confirmPunishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 intent = new Intent(PunishSettingsActivity.this, PunishDetailsActivity.class);
-                intent.putExtra("difficulty", selectedDifficultyLevel); // put difficulty data in Intent
-                intent.putExtra("title", selectedDrillTitle); // put image data in Intent
                 startActivity(intent);
             }
         });
@@ -85,6 +86,15 @@ public class PunishSettingsActivity extends Activity {
                 selectedDrillTitle = drillsArray[position].title;
 
                 Toast.makeText(PunishSettingsActivity.this, id + " " + selectedDrillTitle + " is added.", Toast.LENGTH_SHORT).show();
+
+                drillItemCount += 1;
+                if (drillItemCount == 2) {
+                    parent.setEnabled(false);
+                }
+
+                Drill currentDrill = drillsArray[position];
+                intent.putExtra(selectedDrillTitle, currentDrill);
+
             }
         });
 
@@ -118,7 +128,9 @@ public class PunishSettingsActivity extends Activity {
                 textView.setVisibility(View.VISIBLE);
                 View imageView = view.findViewById(R.id.gridview_image);
                 imageView.setVisibility(View.INVISIBLE);
-                view.setClickable(false);
+
+                //Limit the item clickable by disable the GridView
+                parent.setEnabled(false);
 
                 selectedDifficultyLevel = difficultiesArray[position].level;
                 Toast.makeText(PunishSettingsActivity.this, id + " Difficulty: " + selectedDifficultyLevel, Toast.LENGTH_SHORT).show();
