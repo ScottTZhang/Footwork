@@ -27,7 +27,7 @@
     <string name="please_pick_a_difficulty">Please pick a difficulty:</string>
     <string name="confirm_punish_settings">Confirm</string>
     <string name="punishClear">Clear</string>
-    <string name="todo">TODO</string>
+    <string name="question_image">question_image</string>
 
     <string-array name="reps_array">
         <item>5</item>
@@ -143,6 +143,10 @@
         <item>7.Jumps/Lunges</item>
         <item>8.Shadow Play (timed)</item>
         <item>9.Side to Side</item>
+        <item>10.Speed Step 1</item>
+        <item>11.Speed Step 2</item>
+        <item>12.Speed Step 3</item>
+        <item>13.Speed Step 4</item>
     </string-array>
     <string-array name="drill_explanation_array">
         <item>Shadow Play with shuttle stack (stack)</item>
@@ -154,14 +158,23 @@
         <item>Jumps/Lunges: Jump over obstacle (timed)</item>
         <item>Shadow Play with shuttle stack (timed)</item>
         <item>Side to Side: high and low stroke (timed)</item>
+        <item>Speed step: Jumping jack (timed)</item>
+        <item>Speed step: side to side hop (double/single leg) (timed)</item>
+        <item>Speed step: forward backward hop (double/single leg) (timed)</item>
+        <item>Speed step: skater hop (one-way/round-trip) (timed)</item>
     </string-array>
 
     <!-- The difficulty element details -->
     <string-array name="difficulty_title_array">
-        <item>2 min / 3 stacks</item>
-        <item>3 min / 4 stacks</item>
-        <item>4 min / 5 stacks</item>
-        <item>5 min / 6 stacks</item>
+        <item>2 mins / 3 stacks</item>
+        <item>3 mins / 4 stacks</item>
+        <item>4 mins / 5 stacks</item>
+        <item>5 mins / 6 stacks</item>
     </string-array>
 
+    <!--Strings imported from face tracker-->
+    <string name="ok">OK</string>
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
+    <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
 </resources>
