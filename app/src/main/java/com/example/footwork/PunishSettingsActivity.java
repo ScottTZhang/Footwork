@@ -21,7 +21,10 @@ public class PunishSettingsActivity extends Activity {
     GridView drillGridView;
     Intent intent;
     String selectedDrillTitle, selectedDifficultyLevel;
+    Drill currentDrill;
     int drillItemCount = 0;
+    int drillLimit = 3;
+    ArrayList<Drill> drillDetailList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,9 @@ public class PunishSettingsActivity extends Activity {
             public void onClick(View v) {
 
                 intent = new Intent(PunishSettingsActivity.this, PunishDetailsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArrayList("drillDetailList", drillDetailList);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
@@ -88,13 +94,13 @@ public class PunishSettingsActivity extends Activity {
                 Toast.makeText(PunishSettingsActivity.this, id + " " + selectedDrillTitle + " is added.", Toast.LENGTH_SHORT).show();
 
                 drillItemCount += 1;
-                if (drillItemCount == 2) {
+                if (drillItemCount == drillLimit) {
                     parent.setEnabled(false);
                 }
 
-                Drill currentDrill = drillsArray[position];
-                intent.putExtra(selectedDrillTitle, currentDrill);
+                currentDrill = drillsArray[position];
 
+                drillDetailList.add(currentDrill);
             }
         });
 
@@ -133,7 +139,7 @@ public class PunishSettingsActivity extends Activity {
                 parent.setEnabled(false);
 
                 selectedDifficultyLevel = difficultiesArray[position].level;
-                Toast.makeText(PunishSettingsActivity.this, id + " Difficulty: " + selectedDifficultyLevel, Toast.LENGTH_SHORT).show();
+                Toast.makeText(PunishSettingsActivity.this, " Difficulty: " + selectedDifficultyLevel, Toast.LENGTH_SHORT).show();
             }
         });
     }
