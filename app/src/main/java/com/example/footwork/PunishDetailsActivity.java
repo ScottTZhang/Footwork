@@ -12,6 +12,7 @@ public class PunishDetailsActivity extends Activity {
 
     Intent intent;
     TextView drillView;
+    String difficultyDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,10 @@ public class PunishDetailsActivity extends Activity {
         String text = "";
 
         intent = getIntent();
+
+        //Can be null if no difficulty is selected.
+        difficultyDetail = intent.getStringExtra("difficulty");
+        text += difficultyDetail + ":\n";
         Bundle bundle = intent.getExtras();
         assert bundle != null;
         ArrayList<Drill> drillList = bundle.getParcelableArrayList("drillDetailList");

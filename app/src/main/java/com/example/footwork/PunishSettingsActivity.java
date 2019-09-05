@@ -1,6 +1,8 @@
 package com.example.footwork;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +25,8 @@ public class PunishSettingsActivity extends Activity {
     String selectedDrillTitle, selectedDifficultyLevel;
     Drill currentDrill;
     int drillItemCount = 0;
-    int drillLimit = 3;
+    final int DRILL_LIMIT = 3;
+    int difficultyItemCount = 0;
     ArrayList<Drill> drillDetailList = new ArrayList<>();
 
     @Override
@@ -48,11 +51,26 @@ public class PunishSettingsActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                intent = new Intent(PunishSettingsActivity.this, PunishDetailsActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putParcelableArrayList("drillDetailList", drillDetailList);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                //Prompt if drill or difficulty is not selected
+                if (drillItemCount == 0 || difficultyItemCount == 0) {
+                    AlertDialog alertDialog = new AlertDialog.Builder(PunishSettingsActivity.this).create();
+                    alertDialog.setTitle("Alert");
+                    alertDialog.setMessage("You must select at least one drill and difficulty.");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
+                } else {
+                    intent = new Intent(PunishSettingsActivity.this, PunishDetailsActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelableArrayList("drillDetailList", drillDetailList);
+                    intent.putExtras(bundle);
+                    intent.putExtra("difficulty", selectedDifficultyLevel);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -94,7 +112,7 @@ public class PunishSettingsActivity extends Activity {
                 Toast.makeText(PunishSettingsActivity.this, id + " " + selectedDrillTitle + " is added.", Toast.LENGTH_SHORT).show();
 
                 drillItemCount += 1;
-                if (drillItemCount == drillLimit) {
+                if (drillItemCount == DRILL_LIMIT) {
                     parent.setEnabled(false);
                 }
 
@@ -136,6 +154,7 @@ public class PunishSettingsActivity extends Activity {
                 imageView.setVisibility(View.INVISIBLE);
 
                 //Limit the item clickable by disable the GridView
+                difficultyItemCount = 1;
                 parent.setEnabled(false);
 
                 selectedDifficultyLevel = difficultiesArray[position].level;
