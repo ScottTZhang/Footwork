@@ -83,9 +83,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         }
 
         //add timer and arrows here!!!???
-        //FaceGraphic mFaceGraphic;
         //onMissing, onNewItem
-        //Can still track up to 7 faces
         //FaceGraphic, limit the number in COLOR_CHOICES???
         //FaceGraphic, limit the size in face.getWidth()
 
@@ -157,12 +155,12 @@ public final class FaceTrackerActivity extends AppCompatActivity {
             Log.w(TAG, "Face detector dependencies are not yet available.");
         }
 
-        //setRequestedPreviewSize is adjustable????
         mCameraSource = new CameraSource.Builder(context, detector)
                 .setRequestedPreviewSize(640, 480)
                 .setFacing(CameraSource.CAMERA_FACING_FRONT)
                 .setRequestedFps(30.0f)
                 .build();
+
 
     }
 

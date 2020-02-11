@@ -125,4 +125,12 @@ public class PlayRepsActivity extends AppCompatActivity {
         }
     };
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Toast.makeText(getApplicationContext(), "Drill has stopped.\n" + result, Toast.LENGTH_LONG).show();
+        this.finish();
+    }
+
 }

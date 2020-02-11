@@ -142,4 +142,11 @@ public class PlayTimeActivity extends AppCompatActivity {
             handler.postDelayed(this, 0);
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Toast.makeText(getApplicationContext(), "Drill has stopped.\n" + result, Toast.LENGTH_LONG).show();
+        this.finish();
+    }
 }
