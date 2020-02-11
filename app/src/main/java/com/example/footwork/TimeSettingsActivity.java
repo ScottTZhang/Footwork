@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class TimeSettingsActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
@@ -84,5 +85,12 @@ public class TimeSettingsActivity extends Activity implements AdapterView.OnItem
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Toast.makeText(getApplicationContext(), "Please select a mode.", Toast.LENGTH_LONG).show();
+        this.finish();
     }
 }

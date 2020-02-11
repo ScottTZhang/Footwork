@@ -162,4 +162,11 @@ public class PunishSettingsActivity extends Activity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Toast.makeText(getApplicationContext(), "Please select a mode.", Toast.LENGTH_LONG).show();
+        this.finish();
+    }
 }

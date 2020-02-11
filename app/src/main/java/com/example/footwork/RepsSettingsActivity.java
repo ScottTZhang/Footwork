@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class RepsSettingsActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
@@ -93,5 +94,12 @@ public class RepsSettingsActivity extends Activity implements AdapterView.OnItem
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Toast.makeText(getApplicationContext(), "Please select a mode.", Toast.LENGTH_LONG).show();
+        this.finish();
     }
 }
