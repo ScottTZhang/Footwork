@@ -166,10 +166,11 @@
 
     <!-- The difficulty element details -->
     <string-array name="difficulty_title_array">
-        <item>2 mins / 3 stacks</item>
-        <item>3 mins / 4 stacks</item>
-        <item>4 mins / 5 stacks</item>
-        <item>5 mins / 6 stacks</item>
+        <item>90 sec / 2 stacks</item>
+        <item>120 sec / 3 stacks</item>
+        <item>150 sec / 4 stacks</item>
+        <item>180 sec / 5 stacks</item>
+        <item>240 sec / 6 stacks</item>
     </string-array>
 
     <!--Strings imported from face tracker-->
@@ -178,4 +179,6 @@
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
     <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
     <string name="drill_details">TextView</string>
+    <string name="faceTimer">00:00</string>
+    <string name="direction">Directions</string>
 </resources>
