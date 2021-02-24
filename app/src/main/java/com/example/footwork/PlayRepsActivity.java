@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class PlayRepsActivity extends AppCompatActivity {
@@ -32,6 +33,7 @@ public class PlayRepsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_reps);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         intent = getIntent();
 
@@ -78,7 +80,7 @@ public class PlayRepsActivity extends AppCompatActivity {
                         String currentReps = String.valueOf(repsDownView.getText());
                         updateRepsInt = Integer.parseInt(currentReps);
                         updateRepsInt--;
-                        repsDownView.setText("" + updateRepsInt);
+                        repsDownView.setText(String.valueOf(updateRepsInt));
 
                         if (updateRepsInt == 0) {
                             updateSetsInt--;
@@ -93,7 +95,7 @@ public class PlayRepsActivity extends AppCompatActivity {
                             } else {
                                 Toast.makeText(getApplicationContext(), "Sets left: " + updateSetsInt, Toast.LENGTH_LONG).show();
                                 updateRepsInt = repsInt;
-                                repsDownView.setText("" + updateRepsInt);
+                                repsDownView.setText(String.format("%d", updateRepsInt));
                                 //reset timer to time next set
                                 handler.removeCallbacks(runnable);
                                 startRepsTimer(breakInt * 1000);
@@ -119,7 +121,7 @@ public class PlayRepsActivity extends AppCompatActivity {
 
             MilliSeconds = (int) (MillisecondTime % 100);
 
-            timer.setText("" + Minutes + ":" + String.format("%02d", Seconds) + "\"" + String.format("%02d", MilliSeconds));
+            timer.setText(String.format("%d:%s\"%s", Minutes, String.format("%02d", Seconds), String.format("%02d", MilliSeconds)));
 
             handler.postDelayed(this, 0);
         }
