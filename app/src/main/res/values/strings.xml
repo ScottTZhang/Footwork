@@ -166,7 +166,7 @@
 
     <!-- The difficulty element details -->
     <string-array name="difficulty_title_array">
-        <item>90 sec / 2 stacks</item>
+        <item>90 sec  / 2 stacks</item>
         <item>120 sec / 3 stacks</item>
         <item>150 sec / 4 stacks</item>
         <item>180 sec / 5 stacks</item>
@@ -181,4 +181,26 @@
     <string name="drill_details">TextView</string>
     <string name="faceTimer">00:00</string>
     <string name="direction">Directions</string>
+
+    <!--Strings in drills settings-->
+    <string name="courtImage">court image</string>
+    <string name="front_high">Front High</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+    <string name="l_front_high">Front High</string>
+    <string name="l_middle_high">Middle High</string>
+    <string name="l_middle_low">Middle Low</string>
+    <string name="l_back_high">Back High</string>
+    <string name="l_back_low">Back Low</string>
+    <string name="l_front_low">Front Low</string>
+    <string name="r_back_low">Back Low</string>
+    <string name="r_back_high">Back High</string>
+    <string name="r_middle_low">Middle Low</string>
+    <string name="r_front_low">Front Low</string>
+    <string name="r_middle_high">Middle High</string>
+    <string name="r_front_high">Front High</string>
+    <string name="drill_start">Start</string>
+    <string name="drillsList">Drills:</string>
+    <string name="randomDrill">Random</string>
+
 </resources>
