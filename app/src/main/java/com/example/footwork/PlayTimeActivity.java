@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PlayTimeActivity extends AppCompatActivity {
 
@@ -34,6 +35,7 @@ public class PlayTimeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_time);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         intent = getIntent();
 
@@ -137,7 +139,7 @@ public class PlayTimeActivity extends AppCompatActivity {
 
             MilliSeconds = (int) (MillisecondTime % 100);
 
-            timer.setText("" + Minutes + ":" + String.format("%02d", Seconds) + ":" + String.format("%02d", MilliSeconds));
+            timer.setText(String.format("%s:%s:%s", String.valueOf(Minutes), String.format("%02d", Seconds), String.format("%02d", MilliSeconds)));
 
             handler.postDelayed(this, 0);
         }
