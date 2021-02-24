@@ -54,9 +54,11 @@ public final class FaceTrackerActivity extends AppCompatActivity {
     private CameraSourcePreview mPreview;
     private GraphicOverlay mGraphicOverlay;
 
+
     private static final int RC_HANDLE_GMS = 9001;
     // permission request codes need to be < 256
     private static final int RC_HANDLE_CAMERA_PERM = 2;
+
 
     //==============================================================================================
     // Activity Methods
@@ -72,6 +74,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
 
         mPreview = findViewById(R.id.preview);
         mGraphicOverlay = findViewById(R.id.faceOverlay);
+
 
         // Check for the camera permission before accessing the camera.  If the
         // permission is not granted yet, request permission.
@@ -136,7 +139,10 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         FaceDetector detector = new FaceDetector.Builder(context)
                 .setClassificationType(FaceDetector.NO_CLASSIFICATIONS)
                 .setProminentFaceOnly(true)
-                .setMode(FaceDetector.ACCURATE_MODE)
+                .setMode(FaceDetector.FAST_MODE)
+                .setMinFaceSize((float) 0.35)
+                .setTrackingEnabled(true)
+                .setLandmarkType(FaceDetector.NO_LANDMARKS)
                 .build();
 
         detector.setProcessor(
@@ -155,6 +161,8 @@ public final class FaceTrackerActivity extends AppCompatActivity {
             Log.w(TAG, "Face detector dependencies are not yet available.");
         }
 
+        //setRequestedPreviewSize: Sets the desired width and height of the camera frames in pixels.
+        //!!!! Need to change CAMERA_FACING_BACK to CAMERA_FACING_FRONT when building apk
         mCameraSource = new CameraSource.Builder(context, detector)
                 .setRequestedPreviewSize(640, 480)
                 .setFacing(CameraSource.CAMERA_FACING_FRONT)
