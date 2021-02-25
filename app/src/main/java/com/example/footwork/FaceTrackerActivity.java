@@ -21,6 +21,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -29,6 +30,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -41,6 +43,8 @@ import com.google.android.gms.samples.vision.face.facetracker.ui.camera.CameraSo
 import com.google.android.gms.samples.vision.face.facetracker.ui.camera.GraphicOverlay;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Activity for the face tracker app.  This app detects faces with the rear facing camera, and draws
@@ -59,6 +63,10 @@ public final class FaceTrackerActivity extends AppCompatActivity {
     // permission request codes need to be < 256
     private static final int RC_HANDLE_CAMERA_PERM = 2;
 
+    Intent i;
+    ArrayList<String> drillList;
+    boolean randomDrill;
+
 
     //==============================================================================================
     // Activity Methods
@@ -74,13 +82,22 @@ public final class FaceTrackerActivity extends AppCompatActivity {
 
         mPreview = findViewById(R.id.preview);
         mGraphicOverlay = findViewById(R.id.faceOverlay);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
 
         // Check for the camera permission before accessing the camera.  If the
         // permission is not granted yet, request permission.
         int rc = ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
         if (rc == PackageManager.PERMISSION_GRANTED) {
+
+            i = getIntent();
+            drillList = i.getStringArrayListExtra("drillList");
+            randomDrill = i.getBooleanExtra("randomDrill", true);
+            String result = drillList.toString() + "\n" + randomDrill;
+            Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+
             createCameraSource();
+
         } else {
             requestCameraPermission();
         }
