@@ -203,4 +203,7 @@
     <string name="drillsList">Drills:</string>
     <string name="randomDrill">Random</string>
 
+    <!--Drill settings page string-->
+    <string name="drills_colon">Drills: %s</string>
+
 </resources>
