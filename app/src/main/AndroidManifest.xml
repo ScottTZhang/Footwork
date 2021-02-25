@@ -22,23 +22,20 @@
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/backup_descriptor" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="face" />
 
-        <activity
-            android:name=".PunishSettingsActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".PunishSettingsActivity" />
         <activity android:name=".PunishDetailsActivity" />
         <activity android:name=".PlayTimeActivity" />
         <activity android:name=".PlayRepsActivity" />
         <activity android:name=".RepsSettingsActivity" />
         <activity android:name=".TimeSettingsActivity" />
+        <activity android:name=".DrillSelectActivity" />
         <activity
             android:name=".FaceTrackerActivity"
             android:screenOrientation="fullSensor" />
