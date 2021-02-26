@@ -1,5 +1,7 @@
 package com.example.footwork;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -237,10 +239,25 @@ public class DrillSelectActivity extends AppCompatActivity {
         playDrillButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i = new Intent(DrillSelectActivity.this, FaceTrackerActivity.class);
-                i.putExtra("drillList", drillList);
-                i.putExtra("randomDrill", randomSwitch.isChecked());
-                startActivity(i);
+
+                //Prompt if drill or difficulty is not selected
+                if (drillList.size() == 0) {
+                    AlertDialog alertDialog = new AlertDialog.Builder(DrillSelectActivity.this).create();
+                    alertDialog.setTitle("Alert");
+                    alertDialog.setMessage("You must select at least one drill.");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
+                } else {
+                    i = new Intent(DrillSelectActivity.this, FaceTrackerActivity.class);
+                    i.putExtra("drillList", drillList);
+                    i.putExtra("randomDrill", randomSwitch.isChecked());
+                    startActivity(i);
+                }
             }
         });
 
