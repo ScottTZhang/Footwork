@@ -1,44 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/topLayout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:keepScreenOn="true"
-    android:orientation="vertical">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:keepScreenOn="true">
 
-    <com.google.android.gms.samples.vision.face.facetracker.ui.camera.CameraSourcePreview
-        android:id="@+id/preview"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/topLayout"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:keepScreenOn="true"
+        android:orientation="vertical">
 
-        <com.google.android.gms.samples.vision.face.facetracker.ui.camera.GraphicOverlay
-            android:id="@+id/faceOverlay"
+        <com.google.android.gms.samples.vision.face.facetracker.ui.camera.CameraSourcePreview
+            android:id="@+id/preview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </com.google.android.gms.samples.vision.face.facetracker.ui.camera.CameraSourcePreview>
+            <com.google.android.gms.samples.vision.face.facetracker.ui.camera.GraphicOverlay
+                android:id="@+id/faceOverlay"
+                android:layout_width="match_parent"
+                android:layout_height="480dp"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
+
+        </com.google.android.gms.samples.vision.face.facetracker.ui.camera.CameraSourcePreview>
+
+        <TextView
+            android:id="@+id/timerTextView"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/faceTimer"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/preview" />
+
+        <TextView
+            android:id="@+id/drillCountText"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/drill_count"
+            android:textAlignment="center"
+            android:textSize="101sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timerTextView" />
 
 
-    <TextView
-        android:id="@+id/pointerTextView"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="@string/direction"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/timerTextView"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="@string/faceTimer"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-
-</LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
