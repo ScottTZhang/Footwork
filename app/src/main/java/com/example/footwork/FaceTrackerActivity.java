@@ -30,6 +30,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -57,6 +58,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
 
     private CameraSourcePreview mPreview;
     private GraphicOverlay mGraphicOverlay;
+    ScrollView scrollView;
 
 
     private static final int RC_HANDLE_GMS = 9001;
@@ -108,6 +110,13 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         //FaceGraphic, limit the size in face.getWidth()
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Toast.makeText(getApplicationContext(), "Drill has stopped.", Toast.LENGTH_LONG).show();
+        this.finish();
     }
 
     /**
