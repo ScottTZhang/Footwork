@@ -3,219 +3,233 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <android.support.constraint.ConstraintLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-    tools:context=".DrillSelectActivity">
-
-    <ImageView
-        android:id="@+id/imageView"
+    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/courtImage"
-        android:src="@drawable/halfcourt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:context=".DrillSelectActivity">
 
-    <TextView
-        android:id="@+id/leftDrillText"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:text="@string/left"
-        android:textColor="#0100F2"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="390dp"
+            android:contentDescription="@string/courtImage"
+            android:src="@drawable/halfcourt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/rightDrillText"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="35dp"
-        android:gravity="center"
-        android:text="@string/right"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:textColor="#0100F2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/leftDrillText"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/left"
+            android:textColor="#0100F2"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
-        android:id="@+id/leftFrontHigh"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/l_front_high"
-        android:textColor="#0100F2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leftDrillText" />
+        <TextView
+            android:id="@+id/rightDrillText"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="35dp"
+            android:gravity="center"
+            android:text="@string/right"
+            android:textColor="#0100F2"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
-        android:id="@+id/leftMidHigh"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/l_middle_high"
-        android:textColor="#0100F2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leftFrontLow" />
+        <CheckBox
+            android:id="@+id/leftFrontHigh"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/l_front_high"
+            android:textColor="#0100F2"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/leftDrillText" />
 
-    <CheckBox
-        android:id="@+id/leftMidLow"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/l_middle_low"
-        android:textColor="#0100F2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leftMidHigh" />
+        <CheckBox
+            android:id="@+id/leftMidHigh"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/l_middle_high"
+            android:textColor="#0100F2"
 
-    <CheckBox
-        android:id="@+id/leftBackHigh"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/l_back_high"
-        android:textColor="#0100F2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leftMidLow" />
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/leftFrontLow" />
 
-    <CheckBox
-        android:id="@+id/leftBackLow"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/l_back_low"
-        android:textColor="#0100F2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leftBackHigh" />
+        <CheckBox
+            android:id="@+id/leftMidLow"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="45dp"
+            android:text="@string/l_middle_low"
+            android:textColor="#0100F2"
+            android:textSize="16sp"
 
-    <CheckBox
-        android:id="@+id/leftFrontLow"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/l_front_low"
-        android:textColor="#0100F2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leftFrontHigh" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/leftMidHigh" />
 
-    <CheckBox
-        android:id="@+id/rightFrontHigh"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="35dp"
-        android:text="@string/r_front_high"
-        android:textColor="#0100F2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rightDrillText" />
+        <CheckBox
+            android:id="@+id/leftBackHigh"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/l_back_high"
+            android:textColor="#0100F2"
+            android:textSize="16sp"
 
-    <CheckBox
-        android:id="@+id/rightBackLow"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="35dp"
-        android:text="@string/r_back_low"
-        android:textColor="#0100F2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rightBackHigh" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/leftMidLow" />
 
-    <CheckBox
-        android:id="@+id/rightBackHigh"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="35dp"
-        android:text="@string/r_back_high"
-        android:textColor="#0100F2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rightMidLow" />
+        <CheckBox
+            android:id="@+id/leftBackLow"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="45dp"
+            android:text="@string/l_back_low"
+            android:textColor="#0100F2"
+            android:textSize="16sp"
 
-    <CheckBox
-        android:id="@+id/rightMidLow"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="35dp"
-        android:text="@string/r_middle_low"
-        android:textColor="#0100F2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rightMidHigh" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/leftBackHigh" />
 
-    <CheckBox
-        android:id="@+id/rightFrontLow"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="35dp"
-        android:text="@string/r_front_low"
-        android:textColor="#0100F2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rightFrontHigh" />
+        <CheckBox
+            android:id="@+id/leftFrontLow"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="45dp"
+            android:text="@string/l_front_low"
+            android:textColor="#0100F2"
+            android:textSize="16sp"
 
-    <CheckBox
-        android:id="@+id/rightMidHigh"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="35dp"
-        android:text="@string/r_middle_high"
-        android:textColor="#0100F2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rightFrontLow" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/leftFrontHigh" />
 
-    <TextView
-        android:id="@+id/drillList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/drillsList"
-        android:textSize="20sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        <CheckBox
+            android:id="@+id/rightFrontHigh"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/r_front_high"
+            android:textColor="#0100F2"
+            android:textSize="16sp"
 
-    <Switch
-        android:id="@+id/randomSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/randomDrill"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/drillList" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rightDrillText" />
 
-    <Button
-        android:id="@+id/drillButton"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:text="@string/drill_start"
-        android:layout_marginTop="20dp"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/randomSwitch" />
+        <CheckBox
+            android:id="@+id/rightBackLow"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/r_back_low"
+            android:textColor="#0100F2"
+            android:textSize="16sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rightBackHigh" />
+
+        <CheckBox
+            android:id="@+id/rightBackHigh"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/r_back_high"
+            android:textColor="#0100F2"
+            android:textSize="16sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rightMidLow" />
+
+        <CheckBox
+            android:id="@+id/rightMidLow"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/r_middle_low"
+            android:textColor="#0100F2"
+            android:textSize="16sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rightMidHigh" />
+
+        <CheckBox
+            android:id="@+id/rightFrontLow"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/r_front_low"
+            android:textColor="#0100F2"
+            android:textSize="16sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rightFrontHigh" />
+
+        <CheckBox
+            android:id="@+id/rightMidHigh"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/r_middle_high"
+            android:textColor="#0100F2"
+            android:textSize="16sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rightFrontLow" />
+
+        <TextView
+            android:id="@+id/drillList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/drillsList"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <Switch
+            android:id="@+id/randomSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/randomDrill"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/drillList" />
+
+        <Button
+            android:id="@+id/drillButton"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/drill_start"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/randomSwitch" />
 
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
 </ScrollView>
