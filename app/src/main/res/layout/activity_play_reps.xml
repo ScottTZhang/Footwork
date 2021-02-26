@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:descendantFocusability="blocksDescendants"
+    android:keepScreenOn="true"
     android:orientation="vertical"
     tools:context=".PlayRepsActivity">
 
