@@ -36,6 +36,14 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true" />
 
+            <ImageView
+                android:id="@+id/directionImage"
+                android:src="@drawable/question"
+                android:contentDescription="@string/direction_in_image"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="30dp" />
+
         </com.google.android.gms.samples.vision.face.facetracker.ui.camera.CameraSourcePreview>
 
         <TextView
