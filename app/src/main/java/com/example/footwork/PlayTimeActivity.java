@@ -1,11 +1,13 @@
 package com.example.footwork;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -139,7 +141,7 @@ public class PlayTimeActivity extends AppCompatActivity {
 
             MilliSeconds = (int) (MillisecondTime % 100);
 
-            timer.setText(String.format("%s:%s:%s", String.valueOf(Minutes), String.format("%02d", Seconds), String.format("%02d", MilliSeconds)));
+            timer.setText(String.format("%s:%s:%s", Minutes, String.format("%02d", Seconds), String.format("%02d", MilliSeconds)));
 
             handler.postDelayed(this, 0);
         }
