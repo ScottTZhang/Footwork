@@ -24,10 +24,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.ScrollView;
@@ -35,13 +39,13 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.samples.vision.face.facetracker.ui.camera.CameraSourcePreview;
+import com.google.android.gms.samples.vision.face.facetracker.ui.camera.GraphicOverlay;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.MultiProcessor;
 import com.google.android.gms.vision.Tracker;
 import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
-import com.google.android.gms.samples.vision.face.facetracker.ui.camera.CameraSourcePreview;
-import com.google.android.gms.samples.vision.face.facetracker.ui.camera.GraphicOverlay;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -293,7 +297,9 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         if (code != ConnectionResult.SUCCESS) {
             Dialog dlg =
                     GoogleApiAvailability.getInstance().getErrorDialog(this, code, RC_HANDLE_GMS);
-            dlg.show();
+            if (dlg != null) {
+                dlg.show();
+            }
         }
 
         if (mCameraSource != null) {
@@ -327,8 +333,8 @@ public final class FaceTrackerActivity extends AppCompatActivity {
      * associated face overlay.
      */
     private class GraphicFaceTracker extends Tracker<Face> {
-        private GraphicOverlay mOverlay;
-        private FaceGraphic mFaceGraphic;
+        private final GraphicOverlay mOverlay;
+        private final FaceGraphic mFaceGraphic;
 
         GraphicFaceTracker(GraphicOverlay overlay) {
             mOverlay = overlay;
