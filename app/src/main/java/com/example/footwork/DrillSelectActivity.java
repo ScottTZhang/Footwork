@@ -3,7 +3,6 @@ package com.example.footwork;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +11,8 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -58,11 +59,10 @@ public class DrillSelectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (lfh.isChecked()) {
                     drillList.add("lfh");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 } else {
                     drillList.remove("lfh");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 }
+                drillText.setText(getString(R.string.drills_colon, drillList));
             }
         });
 
@@ -71,11 +71,10 @@ public class DrillSelectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (lfl.isChecked()) {
                     drillList.add("lfl");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 } else {
                     drillList.remove("lfl");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 }
+                drillText.setText(getString(R.string.drills_colon, drillList));
             }
         });
 
@@ -98,11 +97,10 @@ public class DrillSelectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (lmh.isChecked()) {
                     drillList.add("lmh");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 } else {
                     drillList.remove("lmh");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 }
+                drillText.setText(getString(R.string.drills_colon, drillList));
             }
         });
 
@@ -111,11 +109,10 @@ public class DrillSelectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (lbl.isChecked()) {
                     drillList.add("lbl");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 } else {
                     drillList.remove("lbl");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 }
+                drillText.setText(getString(R.string.drills_colon, drillList));
             }
         });
 
@@ -124,11 +121,10 @@ public class DrillSelectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (lbh.isChecked()) {
                     drillList.add("lbh");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 } else {
                     drillList.remove("lbh");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 }
+                drillText.setText(getString(R.string.drills_colon, drillList));
             }
         });
 
@@ -137,11 +133,10 @@ public class DrillSelectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (rfl.isChecked()) {
                     drillList.add("rfl");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 } else {
                     drillList.remove("rfl");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 }
+                drillText.setText(getString(R.string.drills_colon, drillList));
             }
         });
 
@@ -150,11 +145,10 @@ public class DrillSelectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (rfh.isChecked()) {
                     drillList.add("rfh");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 } else {
                     drillList.remove("rfh");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 }
+                drillText.setText(getString(R.string.drills_colon, drillList));
             }
         });
 
@@ -163,11 +157,10 @@ public class DrillSelectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (rml.isChecked()) {
                     drillList.add("rml");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 } else {
                     drillList.remove("rml");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 }
+                drillText.setText(getString(R.string.drills_colon, drillList));
             }
         });
 
@@ -176,11 +169,10 @@ public class DrillSelectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (rmh.isChecked()) {
                     drillList.add("rmh");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 } else {
                     drillList.remove("rmh");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 }
+                drillText.setText(getString(R.string.drills_colon, drillList));
             }
         });
 
@@ -189,11 +181,10 @@ public class DrillSelectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (rbl.isChecked()) {
                     drillList.add("rbl");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 } else {
                     drillList.remove("rbl");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 }
+                drillText.setText(getString(R.string.drills_colon, drillList));
             }
         });
 
@@ -202,11 +193,10 @@ public class DrillSelectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (rbh.isChecked()) {
                     drillList.add("rbh");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 } else {
                     drillList.remove("rbh");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 }
+                drillText.setText(getString(R.string.drills_colon, drillList));
             }
         });
 
@@ -215,11 +205,10 @@ public class DrillSelectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (lfl.isChecked()) {
                     drillList.add("lfl");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 } else {
                     drillList.remove("lfl");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 }
+                drillText.setText(getString(R.string.drills_colon, drillList));
             }
         });
 
@@ -228,11 +217,10 @@ public class DrillSelectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (lfl.isChecked()) {
                     drillList.add("lfl");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 } else {
                     drillList.remove("lfl");
-                    drillText.setText(getString(R.string.drills_colon, drillList));
                 }
+                drillText.setText(getString(R.string.drills_colon, drillList));
             }
         });
 
