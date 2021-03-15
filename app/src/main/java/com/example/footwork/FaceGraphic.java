@@ -15,6 +15,9 @@
  */
 package com.example.footwork;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -23,6 +26,7 @@ import com.google.android.gms.samples.vision.face.facetracker.ui.camera.GraphicO
 import com.google.android.gms.vision.face.Face;
 
 import java.util.Locale;
+
 
 /**
  * Graphic instance for rendering face position, orientation, and landmarks within an associated
@@ -45,16 +49,17 @@ class FaceGraphic extends GraphicOverlay.Graphic {
             Color.YELLOW
     };
 
-
     private static int mCurrentColorIndex = 0;
 
-    private Paint mFacePositionPaint;
-    private Paint mIdPaint;
-    private Paint mBoxPaint;
+    private final Paint mFacePositionPaint;
+    private final Paint mIdPaint;
+    private final Paint mBoxPaint;
 
     private volatile Face mFace;
     private int mFaceId;
     private float mFaceHappiness;
+
+    private Context context;
 
     FaceGraphic(GraphicOverlay overlay) {
         super(overlay);
@@ -107,17 +112,24 @@ class FaceGraphic extends GraphicOverlay.Graphic {
         //canvas.drawText("happiness: " + String.format(Locale.getDefault(), "%.2f", face.getIsSmilingProbability()), x - ID_X_OFFSET, y - ID_Y_OFFSET, mIdPaint);
         //canvas.drawText("right eye: " + String.format(Locale.getDefault(), "%.2f", face.getIsRightEyeOpenProbability()), x + ID_X_OFFSET * 2, y + ID_Y_OFFSET * 2, mIdPaint);
         //canvas.drawText("left eye: " + String.format(Locale.getDefault(), "%.2f", face.getIsLeftEyeOpenProbability()), x - ID_X_OFFSET * 2, y - ID_Y_OFFSET * 2, mIdPaint);
-        canvas.drawText("width: " + String.format(Locale.getDefault(), "%.2f", face.getWidth()), x - ID_X_OFFSET * 2, y - ID_Y_OFFSET * 2, mIdPaint);
+        //canvas.drawText("width: " + String.format(Locale.getDefault(), "%.2f", face.getWidth()), x - ID_X_OFFSET * 2, y - ID_Y_OFFSET * 2, mIdPaint);
         canvas.drawText("height: " + String.format(Locale.getDefault(), "%.2f", face.getHeight()), x + ID_X_OFFSET * 2, y + ID_Y_OFFSET * 2, mIdPaint);
 
-
+        double height = face.getHeight();
         // Draws a bounding box around the face.
-        float xOffset = scaleX(face.getWidth() / 2.0f);
-        float yOffset = scaleY(face.getHeight() / 2.0f);
-        float left = x - xOffset;
-        float top = y - yOffset;
-        float right = x + xOffset;
-        float bottom = y + yOffset;
-        canvas.drawRect(left, top, right, bottom, mBoxPaint);
+        if (height >= 100.0) {
+
+            float xOffset = scaleX(face.getWidth() / 2.0f);
+            float yOffset = scaleY(face.getHeight() / 2.0f);
+            float left = x - xOffset;
+            float top = y - yOffset;
+            float right = x + xOffset;
+            float bottom = y + yOffset;
+            canvas.drawRect(left, top, right, bottom, mBoxPaint);
+
+            Bitmap bitmap = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+            canvas.drawBitmap(bitmap, 0, 0, null);
+
+        }
     }
 }
