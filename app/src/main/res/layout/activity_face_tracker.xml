@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:keepScreenOn="true">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,11 +38,11 @@
 
             <ImageView
                 android:id="@+id/directionImage"
-                android:src="@drawable/question"
+                android:src="@drawable/lbh"
                 android:contentDescription="@string/direction_in_image"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:padding="30dp" />
+                android:visibility="invisible" />
 
         </com.google.android.gms.samples.vision.face.facetracker.ui.camera.CameraSourcePreview>
 
@@ -72,5 +72,5 @@
             app:layout_constraintTop_toBottomOf="@+id/timerTextView" />
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
