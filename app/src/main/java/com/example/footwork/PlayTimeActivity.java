@@ -150,6 +150,8 @@ public class PlayTimeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        restTimer.cancel();
+        workoutTimer.cancel();
         Toast.makeText(getApplicationContext(), "Drill has stopped.\n" + result, Toast.LENGTH_LONG).show();
         this.finish();
     }
