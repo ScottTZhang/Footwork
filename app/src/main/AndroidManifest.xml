@@ -36,10 +36,10 @@
         <activity android:name=".RepsSettingsActivity" />
         <activity android:name=".TimeSettingsActivity" />
         <activity android:name=".DrillSelectActivity" />
+        <activity android:name=".FaceTrackerActivity" />
         <activity
-            android:name=".FaceTrackerActivity"
-            android:screenOrientation="fullSensor" />
-        <activity android:name=".MainActivity">
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
