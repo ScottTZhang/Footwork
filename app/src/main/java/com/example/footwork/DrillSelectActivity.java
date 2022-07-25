@@ -1,6 +1,7 @@
 package com.example.footwork;
 
 import android.app.AlertDialog;
+import android.app.Application;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -255,6 +256,7 @@ public class DrillSelectActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Toast.makeText(getApplicationContext(), "Please select a mode.", Toast.LENGTH_LONG).show();
+        drillList.clear();
         this.finish();
     }
 }
