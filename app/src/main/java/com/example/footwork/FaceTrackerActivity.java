@@ -22,6 +22,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
@@ -34,7 +35,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 import android.view.View;
-import android.widget.ScrollView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -52,27 +53,26 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * Activity for the face tracker app.  This app detects faces with the rear facing camera, and draws
+ * Activity for the face tracker app. This app detects faces with the rear facing camera, and draws
  * overlay graphics to indicate the position, size, and ID of each face.
  */
-public final class FaceTrackerActivity extends AppCompatActivity {
+public class FaceTrackerActivity extends AppCompatActivity {
     private static final String TAG = "FaceTracker";
 
     private CameraSource mCameraSource = null;
 
     private CameraSourcePreview mPreview;
     private GraphicOverlay mGraphicOverlay;
-    ScrollView scrollView;
-
 
     private static final int RC_HANDLE_GMS = 9001;
     // permission request codes need to be < 256
     private static final int RC_HANDLE_CAMERA_PERM = 2;
 
     Intent i;
-    ArrayList<String> drillList;
-    boolean randomDrill;
-
+    public static ArrayList<String> drillList;
+    public static boolean randomDrill;
+    public ImageView direction;
+    public Context context;
 
     //==============================================================================================
     // Activity Methods
@@ -86,8 +86,12 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         super.onCreate(icicle);
         setContentView(R.layout.activity_face_tracker);
 
+        //disable landscape
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         mPreview = findViewById(R.id.preview);
         mGraphicOverlay = findViewById(R.id.faceOverlay);
+        direction = findViewById(R.id.directionImage);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
 
@@ -97,29 +101,24 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         if (rc == PackageManager.PERMISSION_GRANTED) {
 
             i = getIntent();
+
             drillList = i.getStringArrayListExtra("drillList");
             randomDrill = i.getBooleanExtra("randomDrill", true);
+
             String result = drillList.toString() + "\n" + randomDrill;
             Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
-
             createCameraSource();
 
         } else {
             requestCameraPermission();
         }
-
-        //add timer and arrows here!!!???
-        //onMissing, onNewItem
-        //FaceGraphic, limit the number in COLOR_CHOICES???
-        //FaceGraphic, limit the size in face.getWidth()
-
-
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         Toast.makeText(getApplicationContext(), "Drill has stopped.", Toast.LENGTH_LONG).show();
+        drillList.clear();
         this.finish();
     }
 
@@ -169,7 +168,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         FaceDetector detector = new FaceDetector.Builder(context)
                 .setClassificationType(FaceDetector.NO_CLASSIFICATIONS)
                 .setProminentFaceOnly(true)
-                .setMode(FaceDetector.FAST_MODE)
+                .setMode(FaceDetector.ACCURATE_MODE)
                 .setMinFaceSize((float) 0.35)
                 .setTrackingEnabled(true)
                 .setLandmarkType(FaceDetector.NO_LANDMARKS)
@@ -192,14 +191,11 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         }
 
         //setRequestedPreviewSize: Sets the desired width and height of the camera frames in pixels.
-        //!!!! Need to change CAMERA_FACING_BACK to CAMERA_FACING_FRONT when building apk
         mCameraSource = new CameraSource.Builder(context, detector)
-                .setRequestedPreviewSize(640, 480)
+                .setRequestedPreviewSize(800, 600)
                 .setFacing(CameraSource.CAMERA_FACING_FRONT)
                 .setRequestedFps(30.0f)
                 .build();
-
-
     }
 
     /**
@@ -313,6 +309,13 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         }
     }
 
+    //===================
+    // Get public Context
+    //===================
+    /*public Context getContext() {
+        return getApplicationContext();
+    }*/
+
     //==============================================================================================
     // Graphic Face Tracker
     //==============================================================================================
@@ -346,6 +349,12 @@ public final class FaceTrackerActivity extends AppCompatActivity {
          */
         @Override
         public void onNewItem(int faceId, Face item) {
+            int length = drillList.size();
+            boolean random = randomDrill;
+            if (random)
+                mFaceGraphic.setPosition(drillList.get((int) (Math.random() * drillList.size())));
+            else
+                mFaceGraphic.setPosition(drillList.get(faceId % drillList.size()));
             mFaceGraphic.setId(faceId);
         }
 
