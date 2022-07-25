@@ -15,9 +15,8 @@
  */
 package com.example.footwork;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+//import android.content.Context;
+
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -27,24 +26,26 @@ import com.google.android.gms.vision.face.Face;
 
 import java.util.Locale;
 
+import static com.example.footwork.FaceTrackerActivity.drillList;
+import static com.example.footwork.FaceTrackerActivity.randomDrill;
 
 /**
  * Graphic instance for rendering face position, orientation, and landmarks within an associated
  * graphic overlay view.
  */
 class FaceGraphic extends GraphicOverlay.Graphic {
-    private static final float FACE_POSITION_RADIUS = 10.0f;
-    private static final float ID_TEXT_SIZE = 40.0f;
-    private static final float ID_Y_OFFSET = 50.0f;
-    private static final float ID_X_OFFSET = -50.0f;
+    private static final float FACE_POSITION_RADIUS = 5.0f;
+    private static final float ID_TEXT_SIZE = 250.0f; //default 40.0f
+    private static final float ID_Y_OFFSET = 260.0f;  //default 50.0f
+    private static final float ID_X_OFFSET = -260.0f; //default -50.0f
     private static final float BOX_STROKE_WIDTH = 5.0f;
 
     private static final int[] COLOR_CHOICES = {
-            Color.BLUE,
+            //       Color.BLUE,
             Color.CYAN,
             Color.GREEN,
-            Color.MAGENTA,
-            Color.RED,
+            //       Color.MAGENTA,
+            //       Color.RED,
             Color.WHITE,
             Color.YELLOW
     };
@@ -57,9 +58,8 @@ class FaceGraphic extends GraphicOverlay.Graphic {
 
     private volatile Face mFace;
     private int mFaceId;
-    private float mFaceHappiness;
-
-    private Context context;
+    private String mFacePosition;
+    //private float mFaceHappiness;
 
     FaceGraphic(GraphicOverlay overlay) {
         super(overlay);
@@ -78,12 +78,17 @@ class FaceGraphic extends GraphicOverlay.Graphic {
         mBoxPaint.setColor(selectedColor);
         mBoxPaint.setStyle(Paint.Style.STROKE);
         mBoxPaint.setStrokeWidth(BOX_STROKE_WIDTH);
+
     }
 
     void setId(int id) {
         mFaceId = id;
     }
 
+    //set fixed position
+    void setPosition(String position) {
+        mFacePosition = position;
+    }
 
     /**
      * Updates the face instance from the detection of the most recent frame.  Invalidates the
@@ -108,28 +113,81 @@ class FaceGraphic extends GraphicOverlay.Graphic {
         float x = translateX(face.getPosition().x + face.getWidth() / 2);
         float y = translateY(face.getPosition().y + face.getHeight() / 2);
         canvas.drawCircle(x, y, FACE_POSITION_RADIUS, mFacePositionPaint);
-        canvas.drawText("id: " + mFaceId, x + ID_X_OFFSET, y + ID_Y_OFFSET, mIdPaint);
+
+        //canvas.drawText("id: " + mFaceId, x + ID_X_OFFSET, y + ID_Y_OFFSET, mIdPaint);
         //canvas.drawText("happiness: " + String.format(Locale.getDefault(), "%.2f", face.getIsSmilingProbability()), x - ID_X_OFFSET, y - ID_Y_OFFSET, mIdPaint);
         //canvas.drawText("right eye: " + String.format(Locale.getDefault(), "%.2f", face.getIsRightEyeOpenProbability()), x + ID_X_OFFSET * 2, y + ID_Y_OFFSET * 2, mIdPaint);
         //canvas.drawText("left eye: " + String.format(Locale.getDefault(), "%.2f", face.getIsLeftEyeOpenProbability()), x - ID_X_OFFSET * 2, y - ID_Y_OFFSET * 2, mIdPaint);
         //canvas.drawText("width: " + String.format(Locale.getDefault(), "%.2f", face.getWidth()), x - ID_X_OFFSET * 2, y - ID_Y_OFFSET * 2, mIdPaint);
-        canvas.drawText("height: " + String.format(Locale.getDefault(), "%.2f", face.getHeight()), x + ID_X_OFFSET * 2, y + ID_Y_OFFSET * 2, mIdPaint);
+        //canvas.drawText("height: " + String.format(Locale.getDefault(), "%.2f", face.getHeight()), x + ID_X_OFFSET * 2, y + ID_Y_OFFSET * 2, mIdPaint);
 
-        double height = face.getHeight();
-        // Draws a bounding box around the face.
-        if (height >= 100.0) {
-
-            float xOffset = scaleX(face.getWidth() / 2.0f);
-            float yOffset = scaleY(face.getHeight() / 2.0f);
-            float left = x - xOffset;
-            float top = y - yOffset;
-            float right = x + xOffset;
-            float bottom = y + yOffset;
-            canvas.drawRect(left, top, right, bottom, mBoxPaint);
-
-            Bitmap bitmap = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
-            canvas.drawBitmap(bitmap, 0, 0, null);
-
+        String directionText = "";
+        String heightText = "";
+        switch (mFacePosition) {
+            case "lbh":
+                //imageView.setImageResource(R.drawable.lbh);
+                directionText = "↙";
+                heightText = "HIGH";
+                break;
+            case "lbl":
+                //imageView.setImageResource(R.drawable.lbl);
+                directionText = "↙";
+                heightText = "LOW";
+                break;
+            case "lfh":
+                //imageView.setImageResource(R.drawable.lfh);
+                directionText = "↖";
+                heightText = "HIGH";
+                break;
+            case "lfl":
+                //imageView.setImageResource(R.drawable.lfl);
+                directionText = "↖";
+                heightText = "LOW";
+                break;
+            case "lml":
+                //imageView.setImageResource(R.drawable.lml);
+                directionText = "←";
+                heightText = "LOW";
+                break;
+            case "lmh":
+                //imageView.setImageResource(R.drawable.lmh);
+                directionText = "←";
+                heightText = "HIGH";
+                break;
+            case "rfl":
+                //imageView.setImageResource(R.drawable.rfl);
+                directionText = "↗";
+                heightText = "LOW";
+                break;
+            case "rfh":
+                //imageView.setImageResource(R.drawable.rfh);
+                directionText = "↗";
+                heightText = "HIGH";
+                break;
+            case "rml":
+                //imageView.setImageResource(R.drawable.rml);
+                directionText = "→";
+                heightText = "LOW";
+                break;
+            case "rmh":
+                //imageView.setImageResource(R.drawable.rmh);
+                directionText = "→";
+                heightText = "HIGH";
+                break;
+            case "rbl":
+                //imageView.setImageResource(R.drawable.rbl);
+                directionText = "↘";
+                heightText = "LOW";
+                break;
+            case "rbh":
+                //imageView.setImageResource(R.drawable.rbh);
+                directionText = "↘";
+                heightText = "HIGH";
+                break;
         }
+        //canvas.drawText(text, x + ID_X_OFFSET * 7, y + ID_Y_OFFSET * 7, mIdPaint);
+        canvas.drawText(directionText, x + ID_X_OFFSET / 2, y - ID_Y_OFFSET, mIdPaint);
+        canvas.drawText(heightText, x + ID_X_OFFSET, y + ID_Y_OFFSET, mIdPaint);
+        //double height = face.getHeight();
     }
 }

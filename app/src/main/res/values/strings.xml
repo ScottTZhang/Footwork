@@ -207,5 +207,6 @@
     <string name="drills_colon">Drills: %s</string>
     <string name="direction_in_image">direction</string>
     <string name="drill_count">0</string>
+    <string name="drill_countdown">Ready?</string>
 
 </resources>

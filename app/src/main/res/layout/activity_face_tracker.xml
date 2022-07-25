@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:keepScreenOn="true">
+    xmlns:tool="http://schemas.android.com/tools"
+    android:keepScreenOn="true"
+    tool:context=".FaceTrackerActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topLayout"
@@ -18,7 +20,7 @@
         <com.google.android.gms.samples.vision.face.facetracker.ui.camera.CameraSourcePreview
             android:id="@+id/preview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="570dp"
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
@@ -31,17 +33,17 @@
             <com.google.android.gms.samples.vision.face.facetracker.ui.camera.GraphicOverlay
                 android:id="@+id/faceOverlay"
                 android:layout_width="match_parent"
-                android:layout_height="480dp"
+                android:layout_height="570dp"
                 android:layout_centerInParent="true"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true" />
 
             <ImageView
                 android:id="@+id/directionImage"
-                android:src="@drawable/lbh"
-                android:contentDescription="@string/direction_in_image"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/direction_in_image"
+                android:src="@drawable/halfcourt"
                 android:visibility="invisible" />
 
         </com.google.android.gms.samples.vision.face.facetracker.ui.camera.CameraSourcePreview>
@@ -54,7 +56,7 @@
             android:gravity="center"
             android:text="@string/faceTimer"
             android:textAlignment="center"
-            android:textSize="40sp"
+            android:textSize="45sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/preview" />
@@ -62,12 +64,12 @@
         <TextView
             android:id="@+id/drillCountText"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="45dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="@string/drill_count"
+            android:text="@string/drill_countdown"
             android:textAlignment="center"
-            android:textSize="101sp"
+            android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/timerTextView" />
 
