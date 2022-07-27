@@ -50,6 +50,7 @@ import com.google.android.gms.vision.face.FaceDetector;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
@@ -69,10 +70,13 @@ public class FaceTrackerActivity extends AppCompatActivity {
     private static final int RC_HANDLE_CAMERA_PERM = 2;
 
     Intent i;
-    public static ArrayList<String> drillList;
-    public static boolean randomDrill;
+    public ArrayList<String> drillList;
+    public boolean randomDrill;
     public ImageView direction;
     public Context context;
+    public HashMap<Integer, Long> startStamps;
+    public HashMap<Integer, Long> endStamps;
+    double minFaceSize;
 
     //==============================================================================================
     // Activity Methods
@@ -104,9 +108,14 @@ public class FaceTrackerActivity extends AppCompatActivity {
 
             drillList = i.getStringArrayListExtra("drillList");
             randomDrill = i.getBooleanExtra("randomDrill", true);
-
             String result = drillList.toString() + "\n" + randomDrill;
             Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+
+            startStamps = new HashMap<>();
+            endStamps = new HashMap<>();
+
+            minFaceSize = i.getDoubleExtra("faceMinSizeDecimal", 0.45);
+
             createCameraSource();
 
         } else {
@@ -116,10 +125,59 @@ public class FaceTrackerActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Toast.makeText(getApplicationContext(), "Drill has stopped.", Toast.LENGTH_LONG).show();
+        String stampResult = generateStampResult(startStamps, endStamps);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(stampResult)
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        drillList.clear();
+                        startStamps.clear();
+                        endStamps.clear();
+                        FaceTrackerActivity.this.finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+
+        /* super.onBackPressed();
+        String stampResult = "Drill has stopped.\n" + startStamps.size() +"\nEnd: " + endStamps.size();
+        Toast.makeText(getApplicationContext(), stampResult, Toast.LENGTH_LONG).show();
         drillList.clear();
-        this.finish();
+        startStamps.clear();
+        endStamps.clear();
+        this.finish(); */
+    }
+
+    String generateStampResult(HashMap<Integer, Long> startStamps, HashMap<Integer, Long> endStamps) {
+        StringBuilder stampResult = new StringBuilder();
+        stampResult.append("Drill has stopped.\n");
+        double validTotal = 0;
+        int validDrillCount = 0;
+        ArrayList<Double> stamps = new ArrayList<>();
+        for (int startFaceId : startStamps.keySet()) {
+            if (endStamps.containsKey(startFaceId - 1)) {
+                double runningTime = (startStamps.get(startFaceId) - endStamps.get(startFaceId - 1)) / 1000.0;
+                if (runningTime >= 0.8) {
+
+                    stampResult.append(startFaceId + " : ");
+                    stampResult.append(runningTime + "\n");
+
+                    validTotal += runningTime;
+                    validDrillCount++;
+                    stamps.add(runningTime);
+                }
+            }
+        }
+        //stampResult.append(stamps);
+        stampResult.append("\nTotal of " + validDrillCount + ": " + validTotal + " seconds.");
+        return stampResult.toString();
     }
 
     /**
@@ -169,7 +227,7 @@ public class FaceTrackerActivity extends AppCompatActivity {
                 .setClassificationType(FaceDetector.NO_CLASSIFICATIONS)
                 .setProminentFaceOnly(true)
                 .setMode(FaceDetector.ACCURATE_MODE)
-                .setMinFaceSize((float) 0.35)
+                .setMinFaceSize((float) minFaceSize)
                 .setTrackingEnabled(true)
                 .setLandmarkType(FaceDetector.NO_LANDMARKS)
                 .build();
@@ -309,13 +367,6 @@ public class FaceTrackerActivity extends AppCompatActivity {
         }
     }
 
-    //===================
-    // Get public Context
-    //===================
-    /*public Context getContext() {
-        return getApplicationContext();
-    }*/
-
     //==============================================================================================
     // Graphic Face Tracker
     //==============================================================================================
@@ -352,9 +403,9 @@ public class FaceTrackerActivity extends AppCompatActivity {
             int length = drillList.size();
             boolean random = randomDrill;
             if (random)
-                mFaceGraphic.setPosition(drillList.get((int) (Math.random() * drillList.size())));
+                mFaceGraphic.setPosition(drillList.get((int) (Math.random() * length)));
             else
-                mFaceGraphic.setPosition(drillList.get(faceId % drillList.size()));
+                mFaceGraphic.setPosition(drillList.get(faceId % length));
             mFaceGraphic.setId(faceId);
         }
 
@@ -364,6 +415,7 @@ public class FaceTrackerActivity extends AppCompatActivity {
         @Override
         public void onUpdate(FaceDetector.Detections<Face> detectionResults, Face face) {
             mOverlay.add(mFaceGraphic);
+            startStamps.putIfAbsent(mFaceGraphic.getId(), System.currentTimeMillis());
             mFaceGraphic.updateFace(face);
         }
 
@@ -374,6 +426,7 @@ public class FaceTrackerActivity extends AppCompatActivity {
          */
         @Override
         public void onMissing(FaceDetector.Detections<Face> detectionResults) {
+            endStamps.putIfAbsent(mFaceGraphic.getId(), System.currentTimeMillis());
             mOverlay.remove(mFaceGraphic);
         }
 

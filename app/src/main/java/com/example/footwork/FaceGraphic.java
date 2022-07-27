@@ -26,8 +26,6 @@ import com.google.android.gms.vision.face.Face;
 
 import java.util.Locale;
 
-import static com.example.footwork.FaceTrackerActivity.drillList;
-import static com.example.footwork.FaceTrackerActivity.randomDrill;
 
 /**
  * Graphic instance for rendering face position, orientation, and landmarks within an associated
@@ -83,6 +81,10 @@ class FaceGraphic extends GraphicOverlay.Graphic {
 
     void setId(int id) {
         mFaceId = id;
+    }
+
+    public int getId() {
+        return mFaceId;
     }
 
     //set fixed position

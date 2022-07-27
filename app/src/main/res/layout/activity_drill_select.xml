@@ -224,13 +224,39 @@
             android:id="@+id/drillButton"
             android:layout_width="160dp"
             android:layout_height="60dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="64dp"
             android:text="@string/drill_start"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/randomSwitch" />
+
+        <TextView
+            android:id="@+id/MinFaceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="84dp"
+            android:layout_marginTop="20dp"
+            android:text="Face Size:"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/randomSwitch" />
+
+        <EditText
+            android:id="@+id/faceMinSizeDecimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="84dp"
+            android:ems="3"
+            android:inputType="numberDecimal"
+            android:text="0.45"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/randomSwitch" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
