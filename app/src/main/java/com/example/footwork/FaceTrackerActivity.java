@@ -160,7 +160,6 @@ public class FaceTrackerActivity extends AppCompatActivity {
         stampResult.append("Drill has stopped.\n");
         double validTotal = 0;
         int validDrillCount = 0;
-        ArrayList<Double> stamps = new ArrayList<>();
         for (int startFaceId : startStamps.keySet()) {
             if (endStamps.containsKey(startFaceId - 1)) {
                 double runningTime = (startStamps.get(startFaceId) - endStamps.get(startFaceId - 1)) / 1000.0;
@@ -171,11 +170,9 @@ public class FaceTrackerActivity extends AppCompatActivity {
 
                     validTotal += runningTime;
                     validDrillCount++;
-                    stamps.add(runningTime);
                 }
             }
         }
-        //stampResult.append(stamps);
         stampResult.append("\nTotal of " + validDrillCount + ": " + validTotal + " seconds.");
         return stampResult.toString();
     }
