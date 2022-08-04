@@ -10,6 +10,18 @@
         android:layout_height="wrap_content"
         tools:context=".DrillSelectActivity">
 
+        <TextView
+            android:id="@+id/faceHeightLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/face_height"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MinFaceLabel" />
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
@@ -28,7 +40,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="@string/left"
-            android:textColor="#0100F2"
+            android:textColor="#000000"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +54,7 @@
             android:layout_marginEnd="35dp"
             android:gravity="center"
             android:text="@string/right"
-            android:textColor="#0100F2"
+            android:textColor="#000000"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +67,7 @@
             android:layout_marginStart="45dp"
             android:layout_marginTop="10dp"
             android:text="@string/l_front_high"
-            android:textColor="#0100F2"
+            android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/leftDrillText" />
@@ -67,11 +79,12 @@
             android:layout_marginStart="45dp"
             android:layout_marginTop="15dp"
             android:text="@string/l_middle_high"
-            android:textColor="#0100F2"
+            android:textColor="#000000"
 
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/leftFrontLow" />
+            app:layout_constraintTop_toBottomOf="@+id/leftFrontLow"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
         <CheckBox
             android:id="@+id/leftMidLow"
@@ -79,7 +92,7 @@
             android:layout_height="45dp"
             android:layout_marginStart="45dp"
             android:text="@string/l_middle_low"
-            android:textColor="#0100F2"
+            android:textColor="#000000"
             android:textSize="16sp"
 
             app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +105,7 @@
             android:layout_marginStart="45dp"
             android:layout_marginTop="15dp"
             android:text="@string/l_back_high"
-            android:textColor="#0100F2"
+            android:textColor="#000000"
             android:textSize="16sp"
 
             app:layout_constraintStart_toStartOf="parent"
@@ -104,7 +117,7 @@
             android:layout_height="45dp"
             android:layout_marginStart="45dp"
             android:text="@string/l_back_low"
-            android:textColor="#0100F2"
+            android:textColor="#000000"
             android:textSize="16sp"
 
             app:layout_constraintStart_toStartOf="parent"
@@ -116,7 +129,7 @@
             android:layout_height="45dp"
             android:layout_marginStart="45dp"
             android:text="@string/l_front_low"
-            android:textColor="#0100F2"
+            android:textColor="#000000"
             android:textSize="16sp"
 
             app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +142,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="15dp"
             android:text="@string/r_front_high"
-            android:textColor="#0100F2"
+            android:textColor="#000000"
             android:textSize="16sp"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -141,7 +154,7 @@
             android:layout_height="45dp"
             android:layout_marginEnd="15dp"
             android:text="@string/r_back_low"
-            android:textColor="#0100F2"
+            android:textColor="#000000"
             android:textSize="16sp"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -154,7 +167,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
             android:text="@string/r_back_high"
-            android:textColor="#0100F2"
+            android:textColor="#000000"
             android:textSize="16sp"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -166,7 +179,7 @@
             android:layout_height="45dp"
             android:layout_marginEnd="15dp"
             android:text="@string/r_middle_low"
-            android:textColor="#0100F2"
+            android:textColor="#000000"
             android:textSize="16sp"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -178,7 +191,7 @@
             android:layout_height="45dp"
             android:layout_marginEnd="15dp"
             android:text="@string/r_front_low"
-            android:textColor="#0100F2"
+            android:textColor="#000000"
             android:textSize="16sp"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -191,7 +204,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
             android:text="@string/r_middle_high"
-            android:textColor="#0100F2"
+            android:textColor="#000000"
             android:textSize="16sp"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -224,7 +237,7 @@
             android:id="@+id/drillButton"
             android:layout_width="160dp"
             android:layout_height="60dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="130dp"
             android:text="@string/drill_start"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -239,7 +252,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="84dp"
             android:layout_marginTop="20dp"
-            android:text="Face Size:"
+            android:text="@string/face_size"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -257,6 +270,19 @@
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/randomSwitch" />
+
+        <EditText
+            android:id="@+id/faceHeightDecimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="84dp"
+            android:ems="3"
+            android:inputType="numberDecimal"
+            android:text="170"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/faceMinSizeDecimal" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
