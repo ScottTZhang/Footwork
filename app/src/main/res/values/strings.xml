@@ -66,18 +66,20 @@
         <item>90</item>
     </string-array>
     <string-array name="set_array">
+        <item>2</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>
         <item>6</item>
     </string-array>
     <string-array name="start_array">
-        <item>0</item>
+        <item>3</item>
         <item>5</item>
         <item>10</item>
     </string-array>
 
     <string-array name="time_sets_array">
+        <item>2</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>
@@ -121,9 +123,10 @@
         <item>75</item>
         <item>80</item>
         <item>90</item>
+        <item>120</item>
     </string-array>
     <string-array name="time_start_array">
-        <item>0</item>
+        <item>3</item>
         <item>5</item>
         <item>10</item>
     </string-array>
@@ -208,5 +211,7 @@
     <string name="direction_in_image">direction</string>
     <string name="drill_count">0</string>
     <string name="drill_countdown">Ready?</string>
+    <string name="face_height">Face Height:</string>
+    <string name="face_size">Face Size:</string>
 
 </resources>
